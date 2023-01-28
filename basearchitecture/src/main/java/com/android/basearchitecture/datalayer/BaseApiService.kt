@@ -1,0 +1,3 @@
+package com.android.basearchitecture.datalayer
+
+interface BaseApiService

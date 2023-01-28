@@ -1,0 +1,112 @@
+/**
+ * use when ViewBinding is enabled.
+ * To get the viewBinding objects.
+ * */
+
+//package com.android.basearchitecture.extensions
+//
+//import android.view.LayoutInflater
+//import android.view.ViewGroup
+//import androidx.viewbinding.ViewBinding
+//import com.architecture.framework.base.generic.BindingActivity
+//import com.architecture.framework.base.generic.BindingComponent
+//import com.architecture.framework.base.generic.BindingFragment
+//import com.architecture.framework.base.generic.BindingSheetDialog
+//import java.lang.reflect.ParameterizedType
+//
+//fun <V : ViewBinding> Class<*>.getBinding(layoutInflater: LayoutInflater): V {
+//    return try {
+//        @Suppress("UNCHECKED_CAST")
+//        getMethod(
+//            "inflate",
+//            LayoutInflater::class.java
+//        ).invoke(null, layoutInflater) as V
+//    } catch (ex: Exception) {
+//        throw RuntimeException("The ViewBinding inflate function has been changed.", ex)
+//    }
+//}
+//
+//internal fun <V : ViewBinding> Class<*>.getBinding(
+//    layoutInflater: LayoutInflater,
+//    container: ViewGroup?
+//): V {
+//    return try {
+//        @Suppress("UNCHECKED_CAST")
+//        getMethod(
+//            "inflate",
+//            LayoutInflater::class.java,
+//            ViewGroup::class.java,
+//            Boolean::class.java
+//        ).invoke(null, layoutInflater, container, false) as V
+//    } catch (ex: Exception) {
+//        throw RuntimeException("The ViewBinding inflate function has been changed.", ex)
+//    }
+//}
+//
+//internal fun Class<*>.checkMethod(): Boolean {
+//    return try {
+//        getMethod(
+//            "inflate",
+//            LayoutInflater::class.java
+//        )
+//        true
+//    } catch (ex: Exception) {
+//        false
+//    }
+//}
+//
+//
+//internal fun Any.findClass(): Class<*> {
+//    var javaClass: Class<*> = this.javaClass
+//    var result: Class<*>? = null
+//    while (result == null || !result.checkMethod()) {
+//        result = (javaClass.genericSuperclass as? ParameterizedType)
+//            ?.actualTypeArguments?.firstOrNull {
+//                if (it is Class<*>) {
+//                    it.checkMethod()
+//                } else {
+//                    false
+//                }
+//            } as? Class<*>
+//        javaClass = javaClass.superclass
+//    }
+//    return result
+//}
+//
+//inline fun <reified V : ViewBinding> ViewGroup.toBinding(): V {
+//    return V::class.java.getMethod(
+//        "inflate",
+//        LayoutInflater::class.java,
+//        ViewGroup::class.java,
+//        Boolean::class.java
+//    ).invoke(null, LayoutInflater.from(context), this, false) as V
+//}
+//
+////getting ViewBinding For Activity Class
+//internal fun <VB : ViewBinding> BindingActivity<VB>.getBinding(): VB {
+//    return findClass().getBinding(layoutInflater)
+//}
+//
+////getting ViewBinding For fragment Class
+//internal fun <VB : ViewBinding> BindingFragment<VB>.getBinding(
+//    inflater: LayoutInflater,
+//    container: ViewGroup?
+//): VB {
+//    return findClass().getBinding(inflater, container)
+//}
+//
+////getting BindingSheetDialog ViewBinding class object
+//internal fun <VB : ViewBinding> BindingSheetDialog<VB>.getBinding(
+//    inflater: LayoutInflater,
+//    container: ViewGroup?
+//): VB {
+//    return findClass().getBinding(inflater, container)
+//}
+//
+////getting Components ViewBinding class object
+//internal fun <VB : ViewBinding> BindingComponent<VB>.getBinding(
+//    inflater: LayoutInflater,
+//    container: ViewGroup?
+//): VB {
+//    return findClass().getBinding(inflater, container)
+//}

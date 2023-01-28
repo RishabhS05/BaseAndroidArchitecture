@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name_prev">My Application</string>
+    <string name="app_name_dev">My Application</string>
+    <string name="app_name_release">My Application</string>
+</resources>

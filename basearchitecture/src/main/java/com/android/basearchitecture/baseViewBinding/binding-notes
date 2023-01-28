@@ -1,0 +1,4 @@
+if using viewBinding uncomment all files in this generics folders
+and implements the Classes
+That will provide viewBinding objects.
+make sure to checkout the proguard-rules.
