@@ -1,6 +1,5 @@
 package com.example.android.architecture.datalayer.remote
 
-import com.android.basearchitecture.datalayer.BaseApiService
 import com.android.basearchitecture.di.BaseNetworkModule
 import dagger.Module
 import dagger.hilt.InstallIn
